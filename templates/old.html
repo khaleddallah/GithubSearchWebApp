@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>ARAM</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style1.css') }}">
+        <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    </head>
+
+
+
+    <body oncontextmenu="return false;">
+        <!-- <button class="tablink" onclick="openPage('Move', this, '#28555e')" id="defaultOpen">Move</button>
+        <button class="tablink" onclick="openPage('Arms', this, '#285e51')" >Arms</button>
+        <button class="tablink" onclick="openPage('Esp', this, '#a0361e')" >Esp</button>
+        <button class="tablink" onclick="openPage('Scenes', this, '#26446a')">Scenes</button>
+        <button class="tablink" onclick="openPage('Cmds', this, '#405e28')">Cmds</button> -->
+
+        <button class="tablink" onclick="openPage('Move', this, '#50393d')" id="defaultOpen">Move</button>
+        <button class="tablink" onclick="openPage('Arms', this, '#2b2224')" >Arms</button>
+        <button class="tablink" onclick="openPage('Esp', this, '#2b2224')" >Esp</button>
+        <button class="tablink" onclick="openPage('Scenes', this, '#2b2224')">Scenes</button>
+        <button class="tablink" onclick="openPage('Cmds', this, '#2b2224')">Cmds</button>
+
+    <!--  ======== Move =========  -->
+
+        <div id="Move" class="tabcontent">
+            <div>
+                <table style="padding-top:1vh;">
+                    <tr style="text-align:center;">
+                        <td style='width:20%;text-align:right;'>
+                            <input type="image"  class="sizz"   name="direction" src="/static/img/a.png" 
+                            value="ard_cmd:7" style="width:85%;transform:rotate(-45deg);" ontouchstart="sendVal(this, this.value)"
+                            ontouchend="sendVal(this, 'ard_cmd:5')">
+                        </td>
+                        <td style='width:20%;text-align:center;'>
+                            <input type="image" class="sizz"   name="direction" src="/static/img/a.png" 
+                            value="ard_cmd:8" style="width:85%;" ontouchstart="sendVal(this, this.value)"
+                            ontouchend="sendVal(this, 'ard_cmd:5')">
+                        </td>
+                        <td style='width:20%;text-align:left;'>
+                            <input type="image" class="sizz"   name="direction" src="/static/img/a.png" 
+                            value="ard_cmd:9" style="width:85%;transform:rotate(45deg);" ontouchstart="sendVal(this, this.value)"
+                            ontouchend="sendVal(this, 'ard_cmd:5')">
+                        </td>
+                    </tr>
+    
+    
+                    <tr style="text-align:center;">
+                        <td style='width:20%;padding:7vh'></td>
+                        <td style='width:20%;padding:7vh'></td>
+                        <td style='width:20%;padding:7vh'></td>
+                    </tr>
+                    
+                    <tr style="text-align:center;text-align:right;">
+                        <td style='width:20%'>
+                            <input type="image" class="sizz"  name="direction" src="/static/img/a.png" 
+                            value="ard_cmd:1" style="width:85%;transform:rotate(-135deg);" ontouchstart="sendVal(this, this.value)"
+                            ontouchend="sendVal(this, 'ard_cmd:5')">
+                        </td>                        
+                        <td style='width:20%;text-align:center;'>
+                            <input type="image" class="sizz" name="direction" src="/static/img/a.png" 
+                            value="ard_cmd:2" style="width:85%;transform:rotate(180deg);" ontouchstart="sendVal(this, this.value)"
+                            ontouchend="sendVal(this, 'ard_cmd:5')">
+                        </td>
+                        <td style='width:20%;text-align:left;'>
+                            <input type="image" class="sizz"  name="direction" src="/static/img/a.png" 
+                            value="ard_cmd:3" style="width:85%;transform:rotate(135deg);" ontouchstart="sendVal(this, this.value)"
+                            ontouchend="sendVal(this, 'ard_cmd:5')">
+                        </td>                    
+                    </tr>
+                    
+
+                </table>
+            </div>
+        </div>
+
+    <!--  ======== Arms =========  -->
+
+        <div id="Arms" class="tabcontent">
+            <table style="width:80vw; text-align:center;">
+                <tr style="text-align:center; width:100%; height:15vh;font-size:3vw;">
+                    <td style='width:45%'>
+                        <input type="button" value="Normal_Welcome" 
+                        style="width:100%;height:10vh;font-size:3vw;" 
+                        onmouseup="sendVal(this, 'ui:hi')" >
+                    </td>   
+                    <td style="width:10%"></td>
+                    <td style='width:45%'>
+                        <input type="button" value="Military" 
+                        style="width:100%;height:10vh;font-size:3vw;" 
+                        onmouseup="sendVal(this, 'act_dyn_cmd:military')" >
+                    </td>             
+                </tr>
+
+                <tr style="text-align:center; width:100%; height:15vh;">
+                    <td style='width:45%'>
+                        <input type="button" value="Japanise" 
+                        style="width:100%;height:10vh;font-size:3vw;" 
+                        onmouseup="sendVal(this, 'act_dyn_cmd:japanise')" >
+                    </td>                
+                    <td style="width:10%"></td>      
+                    <td style='width:45%'>
+                        <input type="button" value="Ready" 
+                        style="width:100%;height:10vh;font-size:3vw;" 
+                        onmouseup="sendVal(this, 'act_dyn_cmd:ready')" >
+                    </td>             
+                </tr>
+            
+                <tr style="text-align:center; width:100%; height:15vh;">
+                    <td style='width:45%'>
+                        <input type="button" value="Soft" 
+                        style="width:100%;height:10vh;font-size:3vw;" 
+                        onmouseup="sendVal(this, 'act_dyn_cmd:soft')" >
+                    </td>        
+                    <td style="width:10%"></td>              
+                    <td style='width:45%'>
+                        <input type="button" value="Disable_torque" 
+                        style="width:100%;height:10vh;font-size:3vw;" 
+                        onmouseup="sendVal(this, 'act_dyn_shut:1')" >
+                    </td>         
+
+                </tr>  
+            </table>
+        </div>
+
+    <!-- ======== Esp ========= -->
+
+
+    <div id="Esp" class="tabcontent">
+        <table>
+            <tr style="text-align:center; width:100%; height:15vh; padding: 0px;">
+
+                <td style='width:33vw'>
+                    <a style="font-size: 3vw; font-style: bold;">Fan:</a>
+                </td>        
+                <td style="width:33vw">
+                    <input type="button" value="ON" 
+                    style="width:70%;height:10vh; font-size:3vw; background-color: rgb(105, 197, 112);" 
+                    onmouseup="sendVal(this, 'esp:fan1')" >
+                </td>              
+                <td style='width:33vw'>
+                    <input type="button" value="OFF" 
+                    style="width:70%;height:10vh; font-size:3vw; background-color: rgb(197, 111, 105);" 
+                    onmouseup="sendVal(this, 'esp:fan0')" >
+                </td>         
+
+            </tr> 
+
+            <tr style="text-align:center; width:100%; height:15vh; padding: 0px;">
+
+                <td style='width:33vw'>
+                    <a style="font-size: 3vw; font-style: bold;">Heater:</a>
+                </td>        
+                <td style="width:33vw">
+                    <input type="button" value="ON" 
+                    style="width:70%;height:10vh; font-size:3vw; background-color: rgb(105, 197, 112);" 
+                    onmouseup="sendVal(this, 'esp:heat1')" >
+                </td>              
+                <td style='width:33vw'>
+                    <input type="button" value="OFF" 
+                    style="width:70%;height:10vh; font-size:3vw; background-color: rgb(197, 111, 105);" 
+                    onmouseup="sendVal(this, 'esp:heat0')" >
+                </td>         
+
+            </tr> 
+
+            <tr style="text-align:center; width:100%; height:15vh; padding: 0px;">
+
+                <td style='width:33vw'>
+                    <a style="font-size: 3vw; font-style: bold;">Light:</a>
+                </td>        
+                <td style="width:33vw">
+                    <input type="button" value="ON" 
+                    style="width:70%;height:10vh; font-size:3vw; background-color: rgb(105, 197, 112);" 
+                    onmouseup="sendVal(this, 'esp:light1')" >
+                </td>              
+                <td style='width:33vw'>
+                    <input type="button" value="OFF" 
+                    style="width:70%;height:10vh; font-size:3vw; background-color: rgb(197, 111, 105);" 
+                    onmouseup="sendVal(this, 'esp:light0')" >
+                </td>         
+
+            </tr> 
+
+            <tr style="text-align:center; width:100%; height:15vh; padding: 0px;">
+
+                <td style='width:33vw'>
+                    <a style="font-size: 3vw; font-style: bold;">TV:</a>
+                </td>        
+                <td style="width:33vw">
+                    <input type="button" value="ON" 
+                    style="width:70%;height:10vh; font-size:3vw; background-color: rgb(105, 197, 112);" 
+                    onmouseup="sendVal(this, 'esp:tv1')" >
+                </td>              
+                <td style='width:33vw'>
+                    <input type="button" value="OFF" 
+                    style="width:70%;height:10vh; font-size:3vw; background-color: rgb(197, 111, 105);" 
+                    onmouseup="sendVal(this, 'esp:tv0')" >
+                </td>         
+
+            </tr> 
+        </table>
+    </div>
+
+    <!-- ======== Scenes ========= -->
+
+    <div id="Scenes" class="tabcontent">
+        <table>
+            <tr style="text-align:center; width:100%; height:10vh; padding: 0px;">
+                <td style='width:25vw'>
+                    <a style="font-size: 3vw; font-style: bold;">Normal:</a>
+                </td>        
+                <td style="width:25vw">
+                    <input type="button" value="enable" 
+                    style="width:70%;height:10vh; font-size:3vw;  background-color: rgb(91, 150, 177);" 
+                    onmouseup="sendVal(this, 'ui:ensn')" >
+                </td>              
+                <td style='width:25vw'>
+                    <input type="button" value="disable" 
+                    style="width:70%;height:10vh; font-size:3vw;  background-color: rgb(106, 106, 106);" 
+                    onmouseup="sendVal(this, 'ui:dissn')" >
+                </td>                       
+                <td style='width:25vw'>
+                    <input type="button" value="trig" 
+                    style="width:70%;height:10vh; font-size:3vw; background-color: rgb(139, 197, 105);" 
+                    onmouseup="sendVal(this, 'ui:sn')" >
+                </td> 
+            </tr> 
+
+            <tr style="text-align:center; width:100%; height:10vh; padding: 0px;">
+                <td style='width:25vw'>
+                    <a style="font-size: 3vw; font-style: bold;">Cold:</a>
+                </td>        
+                <td style="width:25vw">
+                    <input type="button" value="enable" 
+                    style="width:70%;height:10vh; font-size:3vw;  background-color: rgb(91, 150, 177);" 
+                    onmouseup="sendVal(this, 'ui:ensc')" >
+                </td>              
+                <td style='width:25vw'>
+                    <input type="button" value="disable" 
+                    style="width:70%;height:10vh; font-size:3vw;  background-color: rgb(106, 106, 106);" 
+                    onmouseup="sendVal(this, 'ui:dissc')" >
+                </td>                     
+                <td style='width:25vw'>
+                    <input type="button" value="trig" 
+                    style="width:70%;height:10vh; font-size:3vw; background-color: rgb(139, 197, 105);" 
+                    onmouseup="sendVal(this, 'ui:sc')" >
+                </td> 
+            </tr> 
+
+            <tr style="text-align:center; width:100%; height:10vh; padding: 0px;">
+                <td style='width:25vw'>
+                    <a style="font-size: 3vw; font-style: bold;">Hot:</a>
+                </td>        
+                <td style="width:25vw">
+                    <input type="button" value="enable" 
+                    style="width:70%;height:10vh; font-size:3vw;  background-color: rgb(91, 150, 177);" 
+                    onmouseup="sendVal(this, 'ui:ensi')" >
+                </td>              
+                <td style='width:25vw'>
+                    <input type="button" value="disable" 
+                    style="width:70%;height:10vh; font-size:3vw;  background-color: rgb(106, 106, 106);" 
+                    onmouseup="sendVal(this, 'ui:dissi')" >
+                </td>               
+                <td style='width:25vw'>
+                    <input type="button" value="trig" 
+                    style="width:70%;height:10vh; font-size:3vw; background-color: rgb(139, 197, 105);" 
+                    onmouseup="sendVal(this, 'ui:si')" >
+                </td> 
+            </tr> 
+
+            <tr style="text-align:center; width:100%; height:10vh; padding: 0px;">
+                <td style='width:25vw'>
+                    <a style="font-size: 3vw; font-style: bold;">Dark:</a>
+                </td>        
+                <td style="width:25vw">
+                    <input type="button" value="enable" 
+                    style="width:70%;height:10vh; font-size:3vw;  background-color: rgb(91, 150, 177);" 
+                    onmouseup="sendVal(this, 'ui:ensd')" >
+                </td>              
+                <td style='width:25vw'>
+                    <input type="button" value="disable" 
+                    style="width:70%;height:10vh; font-size:3vw;  background-color: rgb(106, 106, 106);" 
+                    onmouseup="sendVal(this, 'ui:dissd')" >
+                </td>         
+
+                <td style='width:25vw'>
+                    <input type="button" value="trig" 
+                    style="width:70%;height:10vh; font-size:3vw; background-color: rgb(139, 197, 105);" 
+                    onmouseup="sendVal(this, 'ui:sd')" >
+                </td> 
+            </tr> 
+
+            <tr style="text-align:center; width:100%; height:10vh; padding: 0px;">
+                <td style='width:25vw'>
+                    <a style="font-size: 3vw; font-style: bold;">Boring:</a>
+                </td>        
+                <td style="width:25vw">
+                    <input type="button" value="enable" 
+                    style="width:70%;height:10vh; font-size:3vw;  background-color: rgb(91, 150, 177);" 
+                    onmouseup="sendVal(this, 'ui:ensb')" >
+                </td>              
+                <td style='width:25vw'>
+                    <input type="button" value="disable" 
+                    style="width:70%;height:10vh; font-size:3vw;  background-color: rgb(106, 106, 106);" 
+                    onmouseup="sendVal(this, 'ui:dissb')" >
+                </td>        
+                <td style='width:25vw'>
+                    <input type="button" value="speed" 
+                    style="width:70%;height:10vh; font-size:3vw; background-color: rgb(139, 197, 105);" 
+                    onmouseup="sendVal(this, 'ui:magic')" >
+                </td>  
+            </tr> 
+        </table>
+
+        <table>
+            <tr style="text-align:center; width:100%; height:10vh;">
+                <td style="width:100vw;padding-top:3vh;">
+                    <input type="button" value="Stop All Scenarios" 
+                    style="width:70%;height:10vh; font-size:3vw;  background-color: rgb(223, 29, 22);" 
+                    onmouseup="sendVal(this, 'ui:ssss')" >
+                </td>              
+            </tr> 
+        </table>
+
+    </div>
+
+
+    <!-- ======== Cmds ========= -->
+
+
+
+    <div id="Cmds" class="tabcontent">
+        <table>
+            <tr style="text-align:center; width:100%; height:15vh;font-size:3vw;">
+                <td style='width:60vw'>
+                    <input type="button" value="Start Converstion" 
+                    style="width:100%;height:10vh; font-size:3vw;" 
+                    onmouseup="sendVal(this, 'ui:snc')" >
+                </td>             
+            </tr>
+            <tr style="text-align:center; width:100%; height:15vh;font-size:3vw;">
+                <td style='width:60vw'>
+                    <input type="button" value="Sleep" 
+                    style="width:100%;height:10vh; font-size:3vw;" 
+                    onmouseup="sendVal(this, 'ui:sl')" >
+                </td>             
+            </tr>
+            <tr style="text-align:center; width:100%; height:15vh;font-size:3vw;">
+                <td style='width:60vw'>
+                    <input type="button" value="Wake Up" 
+                    style="width:100%;height:10vh; font-size:3vw;" 
+                    onmouseup="sendVal(this, 'ui:ssl')" >
+                </td>             
+            </tr>
+            <tr style="text-align:center; width:100%; height:15vh;font-size:3vw;">
+                <td style='width:60vw'>
+                    <input type="button" value="Shutdown" 
+                    style="width:100%;height:10vh; font-size:3vw;" 
+                    onmouseup="sendVal(this, 'ui:shut')" >
+                </td>             
+            </tr>
+        </table>
+    </div>
+
+
+
+
+    <!-- ======================= -->
+    </body> 
+
+    <!-- ======================= -->
+    <!-- ======== script ========= -->
+    <!-- ======================= -->
+	<script>
+		function sendVal(th,newVal){
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", '/test', true);
+			xhr.setRequestHeader('Content-Type', 'application/json');
+			xhr.send( JSON.stringify({
+						value: newVal
+			}));
+			if(newVal=="ard_cmd:5"){
+				th.classList.remove("p0");
+            }
+			else if(newVal.substr(0, newVal.length-1)=="ard_cmd:"){
+                th.classList.add("p0");
+            }
+		}
+
+        function openPage(pageName, elmnt, color) {
+            // Hide all elvwents with class="tabcontent" by default */
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Rvwove the background color of all tablinks/buttons
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.backgroundColor = "";
+            }
+
+            // Show the specific tab content
+            document.getElementById(pageName).style.display = "block";
+            document.getElementById(pageName).style.backgroundColor = color;
+
+            // Add the specific color to the button used to open the tab content
+            elmnt.style.backgroundColor = color
+        }
+
+            // Get the elvwent with id="defaultOpen" and click on it
+            document.getElementById("defaultOpen").click();
+
+                        
+	</script>
+
+</html>
