@@ -17,42 +17,229 @@
       <p>Robart Test (Github Repsitory Search)</p>
     </div>
 
-    <div class="container-fluid mt-2 px-4">
+    <div class="container-fluid mt-1">
       <div class="row">
-        <div class="col-sm-4  p-1 container">
-          <div class="d-flex flex-column border border-2 border-dark" style="position: fixed;height: 80vh; width: 30%;">
-            <div class="py-1 container text-center bg-dark">
-              <h2 class="text-warning">Search</h2>
+        <div class="col-sm-4  p-1">
+          <div class="d-flex flex-column border border-2 border-dark ms-3"
+            style="position: fixed;height: 80vh; width: 30%;">
+            <div class="pt-1 container text-center bg-dark">
+              <h3 class="text-warning">Search</h3>
             </div>
-            <div class="container mt-2  text-left">
-              <label style="font-size: 14px;">USER / ORG:</label>
+            <div class="container mt-1 px-2 text-left">
+              <label class="fw-bold" style="font-size: 16px;">USER / ORG:</label>
             </div>
-            <div class="container">
-              <input id="searchInput" class="form-control w-100" style="font-size: 12px;" type="text"
-                placeholder="eg. khaleddallah, facebook" name="user">
-            </div>
-            <div class="container text-center mt-4">
-              <button id="searchButton" type="button" class="btn btn-dark px-2 w-100"
-                onclick="SendReq()">Search</button>
-            </div>
-            <br>
-            <div id="spiner" class="text-center">
-              <div class="spinner-border" role="status">
-                <span class="sr-only"></span>
+
+            <div class="container row px-1 mx-0">
+              <div class="col-sm-8 text-center px-1">
+                <input id="searchInput" class="form-control  w-100  border-warning" style="font-size: 16px;" type="text"
+                  placeholder="eg. khaleddallah, facebook" name="user">
+              </div>
+              <div class="col-sm-4 text-center px-1 mx-0">
+                <div class="text-center">
+                  <button id="searchButton" type="button" class="btn btn-dark w-100">Search</button>
+                </div>
+                <div id="spiner" class="text-center">
+                  <div class="spinner-border" role="status">
+                    <span class="sr-only"></span>
+                  </div>
+                </div>
               </div>
             </div>
+
+
+
+
+
+            <div class="container text-left mt-3 pt-1 px-2 text-left border-top border-1 border-dark">
+              <label class="fw-bold" style="font-size: 14px;">Order By:</label>
+            </div>
+
+            <div class="container row px-1 mx-0 mt-1">
+              <div class="col-sm-8 text-left ps-1 pe-0">
+                <select id="order" class="form-select" aria-label="Default select example" style="font-size: 10px;">
+                  <option value="name">Name</option>
+                  <option value="language">Language</option>
+                  <option value="created_at" selected>CreatedAt</option>
+                  <option value="pushed_at">PushedAt</option>
+                  <option value="updated_at">UpdatedAt</option>
+                  <option value="watchers">Watchers</option>
+                  <option value="forks">Forks</option>
+                  <option value="stars">Stars</option>
+                  <option value="issues">Issues</option>
+                </select>
+              </div>
+
+              <div class="col-sm-4 px-1">
+                <select id="orderAZ" class="form-select px-1" aria-label="Default select example"
+                  style="font-size: 10px;">
+                  <option value="ASC" selected>ASC</option>
+                  <option value="DESC">DESC</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="container row mt-2 pt-1 mx-0 px-1 text-left  border-1 border-warning px-2">
+              <div class="col-sm-6 text-left ps-0 pe-0">
+                <label class="fw-bold" style="font-size: 14px;">FILTERS:</label>
+              </div>
+              <div class="col-sm-6 px-1 text-end">
+                <button id="updateButton" type="button" class="btn btn-link p-0 "
+                  style="font-size: 12px;">Update</button>
+              </div>
+            </div>
+
+            <div class="container row px-1 mx-0 mt-1">
+              <div class="col-sm-3 text-left ps-1 pe-0">
+                <label style="font-size: 12px;">Name:</label>
+              </div>
+              <div class="col-sm-9 px-1">
+                <input id="filterName" field="name" typeMMO="ov" class="filter form-control w-100"
+                  style="font-size: 10px;" type="text" placeholder="Web" name="name">
+              </div>
+            </div>
+
+            <div class="container row px-1 mx-0 mt-1">
+              <div class="col-sm-3 text-left ps-1 pe-0">
+                <label style="font-size: 12px;">Language:</label>
+              </div>
+              <div class="col-sm-9 px-1">
+                <input id="filterLanguage" field="language" typeMMO="ov" class="filter form-control w-100"
+                  style="font-size: 10px;" type="text" placeholder="Web" name="name">
+              </div>
+            </div>
+
+            <div class="container row px-1 mx-0 mt-1">
+              <div class="col-sm-3 text-left ps-1 pe-0">
+                <label style="font-size: 12px;">CreatedAt:</label>
+              </div>
+              <div class="col-sm-4 ps-1 pe-0">
+                <input id="filterCreatedMin" field="created_at" typeMMO="min" class="filter form-control w-100"
+                  style="font-size: 10px;" type="text" placeholder="Web" name="name">
+              </div>
+              <div class="col-sm-1 text-center px-0">
+                <label style="font-size: 10px;">-></label>
+              </div>
+              <div class="col-sm-4 ps-0 pe-1">
+                <input id="filterCreatedMax" field="created_at" typeMMO="max" class="filter form-control w-100"
+                  style="font-size: 10px;" type="text" placeholder="Web" name="name">
+              </div>
+            </div>
+
+            <div class="container row px-1 mx-0 mt-1">
+              <div class="col-sm-3 text-left ps-1 pe-0">
+                <label style="font-size: 12px;">PushedAt:</label>
+              </div>
+              <div class="col-sm-4 ps-1 pe-0">
+                <input id="filterPushedMin" field="pushed_at" typeMMO="min" class="filter form-control w-100"
+                  style="font-size: 10px;" type="text" placeholder="Web" name="name">
+              </div>
+              <div class="col-sm-1 text-center px-0">
+                <label style="font-size: 10px;">-></label>
+              </div>
+              <div class="col-sm-4 ps-0 pe-1">
+                <input id="filterPushedMax" field="pushed_at" typeMMO="max" class="filter form-control w-100"
+                  style="font-size: 10px;" type="text" placeholder="Web" name="name">
+              </div>
+            </div>
+
+            <div class="container row px-1 mx-0 mt-1">
+              <div class="col-sm-3 text-left ps-1 pe-0">
+                <label style="font-size: 12px;">UpdatedAt:</label>
+              </div>
+              <div class="col-sm-4 ps-1 pe-0">
+                <input id="filterUpdatedMin" field="updated_at" typeMMO="min" class="filter form-control w-100"
+                  style="font-size: 10px;" type="text" placeholder="Web" name="name">
+              </div>
+              <div class="col-sm-1 text-center px-0">
+                <label style="font-size: 10px;">-></label>
+              </div>
+              <div class="col-sm-4 ps-0 pe-1">
+                <input id="filterUpdatedMax" field="updated_at" typeMMO="max" class="filter form-control w-100"
+                  style="font-size: 10px;" type="text" placeholder="Web" name="name">
+              </div>
+            </div>
+
+
+            <div class="container row px-1 mx-0 mt-1">
+              <div class="col-sm-3 text-left ps-1 pe-0">
+                <label style="font-size: 12px;">Watchers:</label>
+              </div>
+              <div class="col-sm-4 ps-1 pe-0">
+                <input id="filterWatcherMin" field="watchers" typeMMO="min" class="filter form-control w-100"
+                  style="font-size: 10px;" type="text" placeholder="Web" name="name">
+              </div>
+              <div class="col-sm-1 text-center px-0">
+                <label style="font-size: 10px;">-></label>
+              </div>
+              <div class="col-sm-4 ps-0 pe-1">
+                <input id="filterWatcherMax" field="watchers" typeMMO="max" class="filter form-control w-100"
+                  style="font-size: 10px;" type="text" placeholder="Web" name="name">
+              </div>
+            </div>
+
+            <div class="container row px-1 mx-0 mt-1">
+              <div class="col-sm-3 text-left ps-1 pe-0">
+                <label style="font-size: 12px;">Forks:</label>
+              </div>
+              <div class="col-sm-4 ps-1 pe-0">
+                <input id="filterForkMin" field="forks" typeMMO="min" class="filter form-control w-100"
+                  style="font-size: 10px;" type="text" placeholder="Web" name="name">
+              </div>
+              <div class="col-sm-1 text-center px-0">
+                <label style="font-size: 10px;">-></label>
+              </div>
+              <div class="col-sm-4 ps-0 pe-1">
+                <input id="filterForkMax" field="forks" typeMMO="max" class="filter form-control w-100"
+                  style="font-size: 10px;" type="text" placeholder="Web" name="name">
+              </div>
+            </div>
+
+            <div class="container row px-1 mx-0 mt-1">
+              <div class="col-sm-3 text-left ps-1 pe-0">
+                <label style="font-size: 12px;">Stars:</label>
+              </div>
+              <div class="col-sm-4 ps-1 pe-0">
+                <input id="filterStarsMin" field="stars" typeMMO="min" class="filter form-control w-100"
+                  style="font-size: 10px;" type="text" placeholder="Web" name="name">
+              </div>
+              <div class="col-sm-1 text-center px-0">
+                <label style="font-size: 10px;">-></label>
+              </div>
+              <div class="col-sm-4 ps-0 pe-1">
+                <input id="filterStarsMax" field="stars" typeMMO="max" class="filter form-control w-100"
+                  style="font-size: 10px;" type="text" placeholder="Web" name="name">
+              </div>
+            </div>
+
+            <div class="container row px-1 mx-0 mt-1">
+              <div class="col-sm-3 text-left ps-1 pe-0">
+                <label style="font-size: 12px;">Issues:</label>
+              </div>
+              <div class="col-sm-4 ps-1 pe-0">
+                <input id="filterIssuesMin" field="issues" typeMMO="min" class="filter form-control w-100"
+                  style="font-size: 10px;" type="text" placeholder="Web" name="name">
+              </div>
+              <div class="col-sm-1 text-center px-0">
+                <label style="font-size: 10px;">-></label>
+              </div>
+              <div class="col-sm-4 ps-0 pe-1">
+                <input id="filterIssuesMax" field="issues" typeMMO="max" class="filter form-control w-100"
+                  style="font-size: 10px;" type="text" placeholder="Web" name="name">
+              </div>
+            </div>
+
           </div>
         </div>
 
 
 
-        <div class="col-sm-offset-4 col-sm-8">
+        <div class="col-sm-8 pe-5">
           <div class="container">
             <h6 id="noresult" class="pt-5 text-muted"> No results ...</h6>
           </div>
           <div id="cards">
 
-            <div class="card  border-warning my-3 border-3" style="width: 100%;background-color: rgb(31, 31, 31);">
+            <div class="card  border-warning my-3 border-3 mx-2" style="width: 100%;background-color: rgb(31, 31, 31);">
               <div class="card-header text-warning" style="background-color: rgb(33, 33, 33);">
 
                 <h5 class=" name card-title ">...</h5>
@@ -114,10 +301,28 @@
 
   <script>
 
+
+
     document.addEventListener('DOMContentLoaded', (event) => {
       document.getElementById("spiner").style.display = "none";
       document.getElementById("cards").firstElementChild.style.display = "none";
+      document.getElementById("searchButton").addEventListener("click", function (event) {
+        SendReq();
+      });
+      document.getElementById("updateButton").addEventListener("click", function (event) {
+        FilterAll();
+        OrderBy();
+      });
+
+      document.getElementById("order").addEventListener("change", function (event) {
+        OrderBy();
+      });
+      document.getElementById("orderAZ").addEventListener("change", function (event) {
+        OrderBy();
+      });
+
     });
+
 
     document.addEventListener("keyup", function (e) {
       if (e.code === 'Enter') {
@@ -125,10 +330,110 @@
       }
     });
 
+
+
+
+    function GetActiveFilter() {
+      var filters = document.getElementsByClassName("filter");
+      var activeFilters = Array.from(filters).filter(x => x.value != "");
+      return activeFilters;  //    filters[0].typeMMO.value, filters[0].value;
+    }
+
+    function CheckFilter(element, field, typeMMO, value) {
+      if (typeMMO == "min") {
+        return element.getElementsByClassName(field)[0].innerHTML >= value;
+      }
+      if (typeMMO == "max") {
+        return element.getElementsByClassName(field)[0].innerHTML <= value;
+      }
+      if (typeMMO == "ov") {
+        return element.getElementsByClassName(field)[0].innerHTML == value;
+      }
+    }
+
+
+    function FilterElement(element, filters) {
+      for (var i = 0; i < filters.length; i++) {
+        if (!CheckFilter(element, filters[i].getAttribute("field"), filters[i].getAttribute("typeMMO"), filters[i].value)) {
+          console.log("##" + element + " : " + filters[i].getAttribute("field") + " : " + filters[i].getAttribute("typeMMO") + " : " + filters[i].value);
+          element.style.display = "none";
+          return false;
+        }
+      }
+      //for template card
+      if (element.getElementsByClassName("name")[0].innerHTML == "...") {
+        return false;
+      }
+
+      return true;
+    }
+
+
+    function FilterAll() {
+      console.log("fitler ALL");
+      var filters = GetActiveFilter();
+      var elements = document.getElementsByClassName("card");
+      for (var i = 0; i < elements.length; i++) {
+        if (FilterElement(elements[i], filters)) {
+          elements[i].style.display = "block";
+        }
+      }
+    }
+
+
+
+    function OrderBy() {
+      var orderBy = document.getElementById("order").value
+      var direction = document.getElementById("orderAZ").value.toLowerCase();
+      console.log("order by " + orderBy);
+      var elements = document.getElementsByClassName("card");
+
+      var cardsData = [];
+      for (var i = 0; i < elements.length; i++) {
+        cardsData.push(
+          {
+            "name": elements[i].getElementsByClassName("name")[0].innerHTML,
+            "language": elements[i].getElementsByClassName("language")[0].innerHTML,
+            "created_at": elements[i].getElementsByClassName("created_at")[0].innerHTML,
+            "pushed_at": elements[i].getElementsByClassName("pushed_at")[0].innerHTML,
+            "updated_at": elements[i].getElementsByClassName("updated_at")[0].innerHTML,
+            "watchers": elements[i].getElementsByClassName("watchers")[0].innerHTML,
+            "stars": elements[i].getElementsByClassName("stars")[0].innerHTML,
+            "forks": elements[i].getElementsByClassName("forks")[0].innerHTML,
+            "issues": elements[i].getElementsByClassName("issues")[0].innerHTML
+          }
+        )
+      }
+
+      cardsData.sort(function (a, b) {
+        var x = a[orderBy].toLowerCase();
+        var y = b[orderBy].toLowerCase();
+        if (direction == "asc") {
+          return x < y ? -1 : x > y ? 1 : 0;
+        } else {
+          return x > y ? -1 : x < y ? 1 : 0;
+        }
+      });
+      for (var i = 0; i < cardsData.length; i++) {
+        // console.log(arrayCopy[i].getElementsByClassName("name")[0].innerHTML);
+        elements[i].getElementsByClassName("name")[0].innerHTML = cardsData[i]["name"];
+        elements[i].getElementsByClassName("language")[0].innerHTML = cardsData[i]["language"];
+        elements[i].getElementsByClassName("created_at")[0].innerHTML = cardsData[i]["created_at"];
+        elements[i].getElementsByClassName("pushed_at")[0].innerHTML = cardsData[i]["pushed_at"];
+        elements[i].getElementsByClassName("updated_at")[0].innerHTML = cardsData[i]["updated_at"];
+        elements[i].getElementsByClassName("watchers")[0].innerHTML = cardsData[i]["watchers"];
+        elements[i].getElementsByClassName("stars")[0].innerHTML = cardsData[i]["stars"];
+        elements[i].getElementsByClassName("forks")[0].innerHTML = cardsData[i]["forks"];
+        elements[i].getElementsByClassName("issues")[0].innerHTML = cardsData[i]["issues"];
+      }
+    }
+
+
+
     function SendReq() {
       searchInput = document.getElementById("searchInput").value;
-      console.log(searchInput);
-      console.log(searchInput.length);
+      // console.log(searchInput);
+      // console.log(searchInput.length);
       if (searchInput.length == 0) {
         alert("Please enter a user or org name");
         return;
@@ -137,7 +442,7 @@
         var spinner = document.getElementById("spiner");
         spinner.style.display = "block";
         var searchButton = document.getElementById("searchButton");
-        searchButton.disabled = true;
+        searchButton.style.display = "none";
 
         var xhr = new XMLHttpRequest();
         xhr.responseType = 'json';
@@ -153,15 +458,16 @@
 
         xhr.onload = function () {
           document.getElementById("noresult").style.display = "none";
+          searchButton.style.display = "block";
           spinner.style.display = "none";
-          searchButton.disabled = false;
           if (xhr.status != 200) { // analyze HTTP status of the response
             alert(`Error ${xhr.status}: ${xhr.statusText}`); // e.g. 404: Not Found
             document.getElementById("noresult").style.display = "block";
           } else { // show the result
-            console.log(xhr.response);
-            console.log(xhr.response["data"].length);
+            // console.log(xhr.response);
+            // console.log(xhr.response["data"].length);
             repos = xhr.response["data"];
+            x = repos;
             var cardParent = document.getElementById("cards");
             var card = cardParent.firstElementChild;
             card.style.display = "none";
@@ -172,12 +478,12 @@
               cardParent.children[1].remove();
             }
 
+
             // Add new cards
             for (var repo in repos) {
-              console.log(repos[repo]);
+              // console.log(repos[repo]);
               var clone = card.cloneNode(true); // "deep" clone
               clone.style.display = "block";
-              cardParent.appendChild(clone);
               clone.getElementsByClassName("name")[0].innerHTML = repos[repo]["name"];
               clone.getElementsByClassName("language")[0].innerHTML = repos[repo]["primaryLanguage"] ? repos[repo]["primaryLanguage"]["name"] : "No language";
               clone.getElementsByClassName("created_at")[0].innerHTML = repos[repo]["createdAt"].substring(0, 10);
@@ -187,8 +493,16 @@
               clone.getElementsByClassName("stars")[0].innerHTML = repos[repo]["stargazerCount"];
               clone.getElementsByClassName("forks")[0].innerHTML = repos[repo]["forkCount"];
               clone.getElementsByClassName("issues")[0].innerHTML = repos[repo]["issues"]["totalCount"];
+              cardParent.appendChild(clone);
 
             }
+
+
+            FilterAll();
+            OrderBy();
+
+
+
           }
         };
 
