@@ -1,16 +1,16 @@
 import requests
 import json
+import sys
 from flask import Flask, render_template, request, redirect, url_for, make_response
 import socket, random
 
 
-ACCESS_TOKEN = "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"
+ACCESS_TOKEN = ""
 SERVER_IP = "0.0.0.0"
 PORT = 8000
 
 
 endpoint = "https://api.github.com/graphql"
-auth_header = {'Authorization': 'Token ' + ACCESS_TOKEN}
 app = Flask(__name__) 
 
 
@@ -50,6 +50,7 @@ def GenerateQuery(name, after_cursor=None):
 
 
 def GetRepositories(name):
+    auth_header = {'Authorization': 'Token ' + ACCESS_TOKEN}
     hasNextPage = True
     after = None
     results = list()
@@ -61,6 +62,7 @@ def GetRepositories(name):
             hasNextPage = data.json()["data"]["repositoryOwner"]["repositories"]["pageInfo"]["hasNextPage"]
             after = data.json()["data"]["repositoryOwner"]["repositories"]["pageInfo"]["endCursor"]
         else:
+            print(data.json())
             raise Exception(f"Query failed to run with a {data.status_code}.")
             return
     return results
@@ -86,6 +88,13 @@ def reroute():
 
 
 if __name__ == "__main__":
+    if(len(ACCESS_TOKEN)==0):
+        if(len(sys.argv)<2):
+            print("Please set the ACCESS_TOKEN variable in devops3.py")
+            exit(1)
+        else:
+            ACCESS_TOKEN = sys.argv[1]
+
     main()
 
 
