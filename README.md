@@ -2,10 +2,12 @@
 
 ![picture not loaded correctly](https://github.com/khaleddallah/githubsearch/blob/master/screenshot.gif)
 
-### About
+### About:    
 Web app to search through github repositories of a single user, with the ability to order and filter by any statistical field.
 
-### USE     
+      
+  
+### Usage:         
 ```
 python3 devops.py ACCESS_TOCKEN
 ```
