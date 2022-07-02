@@ -1,17 +1,17 @@
 import requests
 import json
-
-
 from flask import Flask, render_template, request, redirect, url_for, make_response
 import socket, random
 
 
-accessToken = "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"
-endpoint = "https://api.github.com/graphql"
-auth_header = {'Authorization': 'Token ' + accessToken}
-server_ip = "0.0.0.0"
-app = Flask(__name__) 
+ACCESS_TOKEN = "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"
+SERVER_IP = "0.0.0.0"
+PORT = 8000
 
+
+endpoint = "https://api.github.com/graphql"
+auth_header = {'Authorization': 'Token ' + ACCESS_TOKEN}
+app = Flask(__name__) 
 
 
 def GenerateQuery(name, after_cursor=None):
@@ -61,20 +61,19 @@ def GetRepositories(name):
             hasNextPage = data.json()["data"]["repositoryOwner"]["repositories"]["pageInfo"]["hasNextPage"]
             after = data.json()["data"]["repositoryOwner"]["repositories"]["pageInfo"]["endCursor"]
         else:
-            raise Exception(f"Query failed to run with a {r.status_code}.")
+            raise Exception(f"Query failed to run with a {data.status_code}.")
             return
     return results
 
 
 def main():
     app.config["CACHE_TYPE"] = "null"
-    app.run(debug=True, host='0.0.0.0', port=8001) 
-
+    app.run(debug=True, host=SERVER_IP, port=PORT) 
 
 
 @app.route('/')
 def index():
-    return render_template('index.html', server_ip=server_ip)
+    return render_template('index.html', server_ip=SERVER_IP)
 
 
 @app.route('/test', methods=['POST'])
@@ -84,7 +83,6 @@ def reroute():
     data = GetRepositories(name)
     print(data)
     return {"data":data}
-    
 
 
 if __name__ == "__main__":
