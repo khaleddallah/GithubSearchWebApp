@@ -9,5 +9,5 @@ Web app to search through github repositories of a single user, with the ability
   
 ### Usage:         
 ```
-python3 devops.py ACCESS_TOCKEN
+python3 server.py ACCESS_TOCKEN
 ```
